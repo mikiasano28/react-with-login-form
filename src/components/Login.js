@@ -38,12 +38,12 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
-    isValid: null,
+    isValid: undefined,
   });
 
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
-    isValid: null,
+    isValid: undefined,
   });
   
 
@@ -80,7 +80,7 @@ const Login = (props) => {
 
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
-    dispatchEmail({ type: "USER_PASSWORD", val: event.target.value })
+    dispatchPassword({ type: "USER_PASSWORD", val: event.target.value })
 
     // setFormIsValid(
     //   emailState.isValid && event.target.value.trim().length > 6
