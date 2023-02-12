@@ -54,19 +54,23 @@ const Login = (props) => {
     return () => {
       console.log("EFFECT CLEAN UP");
     }
-  }, [passwordState.value]);
+  }, []);
+
+  // =========== to set alias object to prevent from displaying console again and again, it just needss one time after email and password is valid 
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
 
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("Checking from validity");
-      setFormIsValid(emailState.isValid && passwordState.isValid);
+      setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
 
     return () => {
       console.log("CLEAN UP");
       clearTimeout(identifier);
     }
-  }, [emailState, passwordState])
+  }, [emailIsValid, passwordIsValid])
 
 
 
